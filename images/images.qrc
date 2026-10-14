@@ -1,0 +1,43 @@
+<RCC>
+    <qresource prefix="/">
+        <file>logo-qt.png</file>
+        <file>q_app_logo2.png</file>
+        <file>q_info.png</file>
+        <file>q_settings.png</file>
+        <file>q_setup.png</file>
+        <file>q_connect2.png</file>
+        <file>q_refresh.png</file>
+        <file>q_hand2.png</file>
+        <file>q_clear.png</file>
+        <file>q_ret.png</file>
+        <file>q_exit.png</file>
+        <file>q_protocol1.png</file>
+        <file>q_printer_setup.png</file>
+        <file>q_printer.png</file>
+        <file>q_print_preview.png</file>
+        <file>q_circle_green.png</file>
+        <file>q_circle_light_green.png</file>
+        <file>q_circle_red.png</file>
+        <file>q_circle_gray.png</file>
+        <file>q_circle_yellow.png</file>
+        <file>q_bto.png</file>
+        <file>q_bto_green.png</file>
+        <file>q_bto_light_green.png</file>
+        <file>q_bto_yellow.png</file>
+        <file>q_bto_red.png</file>
+        <file>q_comport.png</file>
+        <file>q_eth.png</file>
+        <file>q_gamma_128.png</file>
+        <file>q_gamma_512.png</file>
+        <file>q_terminal.png</file>
+        <file>q_platotest.png</file>
+        <file>q_waiting.gif</file>
+        <file>q_api.png</file>
+        <file>q_operator.png</file>
+        <file>q_sn.png</file>
+        <file>q_chip.png</file>
+        <file>q_slider_power_on.png</file>
+        <file>q_slider_power_off.png</file>
+        <file>q_opendir.svg</file>
+    </qresource>
+</RCC>

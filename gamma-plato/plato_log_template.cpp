@@ -1,0 +1,125 @@
+/*!
+  \file   plato_log_template.cpp
+  \brief  Шаблон страницы отчета
+  \author Aleksey Lekhtin
+  \date   created 19.05.2017
+*/
+
+#include <QString>
+#include "plato.h"
+
+// Шаблон заголовка отчета
+QString PLATO::protocol_make_html_template_header() const
+{
+    auto page = QStringLiteral(
+        "<!DOCTYPE HTML>\n"
+        "<html>\n"
+        "<head>\n"
+        "<meta http-equiv=\"content-type\" content=\"text/html; charset=utf-8\">\n"
+        "<title>$TITLE0</title>\n"
+        "<style>\n"
+        "body {\n"
+        "    font-family: Times New Roman; font-size: 10pt;\n"
+        "    font-size: 100%;\n"
+        "    max-width: 600px;\n"
+        "    margin: 0 auto;\n"
+        "}\n\n"
+        "table {\n"
+        "    font-family: Times New Roman; font-size: 10pt;\n"
+        "    border: 1;\n"
+        "    border-collapse:collapse;\n"
+        "    border: none !important;\n"
+        "    border-spacing: 0;\n"
+        "    border-padding: 0;\n"
+        "}\n\n"
+        "td {\n"
+        "    font-family: Times New Roman; font-size: 11pt;\n"
+        "    padding-left: 2px;\n"
+        "    padding-right: 2px;\n"
+        "    padding-top: 0px;\n"
+        "    padding-bottom: 0px;\n"
+        "    border: none;\n"
+        "    border-collapse: collapse;\n"
+        "}\n\n"
+        ".header {\n"
+        "    font-family: Times New Roman; font-size: 13pt;\n"
+        "    border: none;\n"
+        "    border-collapse: collapse;\n"
+        "}\n\n"
+        ".tdhdr {\n"
+        "    font-family: Times New Roman; font-size: 10pt;\n"
+        "    padding-left: 2px;\n"
+        "    padding-right: 2px;\n"
+        "    padding-top: 0px;\n"
+        "    padding-bottom: 0px;\n"
+        "    border: none;\n"
+        "    border-collapse: collapse;\n"
+        "    text-align: center;\n"
+        "}\n\n"
+        ".tdfn {\n"
+        "    font-family: Times New Roman; font-size: 10pt;\n"
+        "}\n\n"
+        "</style>\n"
+        "</head>\n"
+        "\n"
+
+        "<body>\n"
+        "<table class=\"header\">\n"
+
+        "<tr>\n"
+        "<td align=\"left\">$PASSED_LBL</td>\n"
+        "<td align=\"left\">:</td>\n"
+        "<td align=\"left\">$PASSED&nbsp;$SPCITEM</td>\n"
+        "<td align=\"left\">$TOOLNAME_LBL</td>\n"
+        "<td align=\"left\">:</td>\n"
+        "<td align=\"left\">$TOOLNAME</td>\n"
+        "</tr>\n"
+
+        "<tr>\n"
+        "<td align=\"left\">$CALIBR_DATE_LBL</td>\n"
+        "<td align=\"left\">:</td>\n"
+        "<td align=\"left\">$CALIBR_DATE&nbsp;$SPCITEM</td>\n"
+        "<td align=\"left\">$TOOLPN_LBL</td>\n"
+        "<td align=\"left\">:</td>\n"
+        "<td align=\"left\">$TOOLPN</td>\n"
+        "</tr>\n"
+
+        "<tr>\n"
+        "<td align=\"left\">$ACQTIME_LBL</td>\n"
+        "<td align=\"left\">:</td>\n"
+        "<td align=\"left\">$ACQTIME&nbsp;$SPCITEM</td>\n"
+        "<td align=\"left\">$TOOLSN_LBL</td>\n"
+        "<td align=\"left\">:</td>\n"
+        "<td align=\"left\">$TOOLSN</td>\n"
+        "</tr>\n"
+
+        "<tr>\n"
+        "<td align=\"left\">$OPER_LBL</td>\n"
+        "<td align=\"left\">:</td>\n"
+        "<td align=\"left\">$OPER_NAME&nbsp;$SPCITEM</td>\n"
+        "<td align=\"left\">$TEMP_LBL</td>\n"
+        "<td align=\"left\">:</td>\n"
+        "<td align=\"left\">$TEMP</td>\n"
+        "</tr>\n"
+
+        "<tr>\n"
+        "<td align=\"left\">$HV_LBL</td>\n"
+        "<td align=\"left\">:</td>\n"
+        "<td align=\"left\">$HV&nbsp;$SPCITEM</td>\n"
+        "<td align=\"left\">&nbsp;</td>\n"
+        "<td align=\"left\">&nbsp;</td>\n"
+        "<td align=\"left\">&nbsp;</td>\n"
+        "</tr>\n"
+        "</table>\n"
+
+        "<table >\n"
+        "<tr>\n"
+        "<td class=\"tdfn\" align=\"left\">$FILE_LBL</td>\n"
+        "<td class=\"tdfn\" align=\"left\">:</td>\n"
+        "<td class=\"tdfn\" align=\"left\" colspan=5>$FILE</td>\n"
+        "</tr>\n"
+        "</table>\n"
+
+        "<br>\n\n");
+    return page;
+}

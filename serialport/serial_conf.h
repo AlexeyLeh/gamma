@@ -1,0 +1,156 @@
+/*!
+  \file   serial_conf.h
+  \brief  Serial port form
+  \author Aleksey Lekhtin
+  \date   created 17.11.2014
+*/
+
+#ifndef __SERIALCONF_H_
+#define __SERIALCONF_H_
+
+#include <QGroupBox>
+#include <QComboBox>
+#include <QLabel>
+#include <QPushButton>
+#include <QCheckBox>
+#include <QSerialPort>
+#include <QSerialPortInfo>
+
+//-----------------------------------------------------------
+// Структура описания последовательного порта
+//
+class port_t
+{
+public:
+
+    port_t()
+    {
+        baudRate  = QSerialPort::Baud9600;
+        dataBits  = QSerialPort::Data8;
+        stopBits  = QSerialPort::OneStop;
+        parity    = QSerialPort::NoParity;
+        flowCtrl  = QSerialPort::NoFlowControl;
+        localEcho = false;
+        //sName     = def_name();
+        sBaudRate = QString::number(baudRate);
+        sDataBits = QString::number(dataBits);
+        sStopBits = QStringLiteral("1");
+        sParity   = QStringLiteral("None");
+        sFlowCtrl = QStringLiteral("None");
+    }
+
+    //-------------------------------------------
+    ~port_t()
+    {
+        ;
+    }
+
+    //-------------------------------------------
+    static QString def_name()
+    {
+        QString def_name = QStringLiteral("/dev/ttyS0");
+#ifdef Q_OS_WIN
+        def_name = QStringLiteral("COM1");
+#endif
+        return def_name;
+    }
+
+    //-------------------------------------------
+    port_t operator=(const port_t & port)
+    {
+        sName     = port.sName;
+        baudRate  = port.baudRate;
+        dataBits  = port.dataBits;
+        parity    = port.parity;
+        stopBits  = port.stopBits;
+        flowCtrl  = port.flowCtrl;
+        localEcho = port.localEcho;
+
+        sBaudRate = QString::number(port.baudRate);
+        sDataBits = QString::number(port.dataBits);
+        sStopBits = QString::number(port.stopBits);
+
+        if(     port.parity ==-1) sParity = QStringLiteral("Auto");
+        else if(port.parity == 2) sParity = QStringLiteral("Even");
+        else if(port.parity == 3) sParity = QStringLiteral("Odd" );
+        else if(port.parity == 4) sParity = QStringLiteral("Space");
+        else if(port.parity == 5) sParity = QStringLiteral("Mark");
+        else sParity = QStringLiteral("None");
+
+        if(     port.flowCtrl == 1) sFlowCtrl = QStringLiteral("RTS/CTS");
+        else if(port.flowCtrl == 2) sFlowCtrl = QStringLiteral("XON/XOFF");
+        else sFlowCtrl = QStringLiteral("None");
+        return *this;
+    }
+
+    //-------------------------------------------
+    bool         localEcho;
+    QString      sName;
+    QString      sBaudRate;
+    QString      sDataBits;
+    QString      sStopBits;
+    QString      sParity;
+    QString      sFlowCtrl;
+
+    int                      baudRate;
+    QSerialPort::DataBits    dataBits;
+    QSerialPort::Parity      parity;
+    QSerialPort::StopBits    stopBits;
+    QSerialPort::FlowControl flowCtrl;
+};
+
+class SERIALPORT_FORM : public QWidget
+{
+   Q_OBJECT;
+
+public:
+
+   explicit SERIALPORT_FORM(QWidget *parent = 0);
+   ~SERIALPORT_FORM();
+
+   port_t   port_settings();
+   void     set_port_settings(const port_t & port);
+   QWidget  *create_fields_layout();
+   void     update_form_fields();
+   void     flush_form_fields();
+
+private slots:
+   void slot_get_port_list();
+   void slot_display_port_info(int index);
+   void slot_checkCustomBaudRatePolicy(int index);
+
+private:
+   void set_form_values();
+
+private:
+   QGroupBox     *m_selectBox;
+   QComboBox     *m_serialportList;
+   QLabel        *m_descriptionLabel;
+   QLabel        *m_manufacturerLabel;
+   QLabel        *m_serialNumberLabel;
+   QLabel        *m_locationLabel;
+   QLabel        *m_vidLabel;
+   QLabel        *m_pidLabel;
+
+   QGroupBox     *m_parametersBox;
+   QLabel        *m_baudRateLabel;
+   QLabel        *m_dataBitsLabel;
+   QLabel        *m_parityLabel;
+   QLabel        *m_stopBitsLabel;
+   QLabel        *m_flowCtrlLabel;
+
+   QComboBox     *m_baudRateBox;
+   QComboBox     *m_dataBitsBox;
+   QComboBox     *m_parityBox;
+   QComboBox     *m_stopBitsBox;
+   QComboBox     *m_flowCtrlBox;
+
+   QGroupBox     *m_miscBox;
+   QPushButton   *m_refreshButton;
+   QCheckBox     *m_localEchoCheckBox;
+
+   port_t         m_port;           // выбранные параметры
+   QIntValidator *m_intValidator;   // проверка на тип - число
+};
+
+#endif // __SERIALCONF_H_

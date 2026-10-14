@@ -1,0 +1,28 @@
+[01] Read Gamma Ray Data                    [RTIME]=200    [CTYPE]=2
+[05] Read Temperature Data                  [RTIME]=200    [CTYPE]=2
+[06] Read  Accelerometer Raw Data           [RTIME]=200    [CTYPE]=2
+[0C] Read/Write KTABLE                      [RTIME]=200    [CTYPE]=3
+[11] Read Accelerometer Inclination Data    [RTIME]=200    [CTYPE]=2
+[13] Read/Write Gamma Ray Acquisition Time  [RTIME]=200    [CTYPE]=3
+[18] Read Accelerometer corrected data      [RTIME]=200    [CTYPE]=2
+[1E] Read the MCU's A/D converter           [RTIME]=200    [CTYPE]=2
+[1F] Read/Write CONFIG Register             [RTIME]=200    [CTYPE]=3
+[20] Device Control                         [RTIME]=200    [CTYPE]=2
+[40] Set HVPS Low                           [RTIME]=200    [CTYPE]=0
+[41] Set HVPS High                          [RTIME]=200    [CTYPE]=0
+[42] Read/Write Calibrate HVPS              [RTIME]=200    [CTYPE]=3
+[43] Read/Write Voltage                     [RTIME]=200    [CTYPE]=3
+[44] Read HVPScorr                          [RTIME]=200    [CTYPE]=1
+[46] Read/Write HVPS Warm-up                [RTIME]=200    [CTYPE]=3
+[50] Read/Write CTABLE                      [RTIME]=200    [CTYPE]=3
+[51] Read/Write Local Gravity               [RTIME]=200    [CTYPE]=3
+[60] Change Node Name                       [RTIME]=200    [CTYPE]=0
+[F1] Read/Write Master Status Register      [RTIME]=200    [CTYPE]=3
+[F4] Read/Write Comments                    [RTIME]=1500   [CTYPE]=3
+[F6] Read/Write Baud Rate                   [RTIME]=200    [CTYPE]=3
+[F7] Read Checksum                          [RTIME]=200    [CTYPE]=1
+[F8] Read/Write Recorder Task               [RTIME]=200    [CTYPE]=2
+[F9] Read/Write Operating Mode              [RTIME]=200    [CTYPE]=3
+[FA] Read/Write Memory                      [RTIME]=200    [CTYPE]=3
+[FB] Read Node Status                       [RTIME]=200    [CTYPE]=0
+[FC] Read Software P/N                      [RTIME]=200    [CTYPE]=1
